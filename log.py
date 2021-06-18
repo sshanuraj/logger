@@ -12,14 +12,13 @@ class Logger:
     def __init__(self, fname):
         self.fname = fname
     
-    #datetime(year, month, day[, hour[, minute[, second[, microsecond[]
-    def getCurrentTS(self):
+    def get_current_ts(self):
         cts=datetime.isoformat(datetime.now())
         return cts[:-7]
 
     def log(self, logType, logText):
         f=open(self.fname, "a")
-        cts = self.getCurrentTS()
+        cts = self.get_current_ts()
         f.write(cts+"|"+inspect.stack()[1][3]+"|"+str(logType)+"|"+str(logText)+"|\n")
         f.close()
 
